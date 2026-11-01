@@ -1,0 +1,29 @@
+# 复制为 application-local.yml 后填写；不要提交真实凭据。
+spring:
+  datasource:
+    username: root
+    password: ''
+    url: jdbc:mysql://127.0.0.1:3306/yingke_drama?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+      password: ''
+      ssl:
+        enabled: false
+      connect-timeout: 1s
+      timeout: 1s
+app:
+  admin-password: ''
+  social-cache:
+    enabled: false
+    key-prefix: 'ai-short-drama:social:'
+    ttl: PT30S
+oss:
+  access-key-id: ''
+  access-key-secret: ''
+  security-token: ''
+  bucket-name: ''
+  region: cn-hangzhou
+  endpoint: ''

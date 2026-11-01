@@ -1,0 +1,6 @@
+target/
+data/
+media/assets/
+.env.local
+.env.*.local
+application-local.yml

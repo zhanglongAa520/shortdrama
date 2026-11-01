@@ -1,0 +1,110 @@
+server:
+  port: ${PORT:8080}
+  servlet:
+    session:
+      cookie:
+        http-only: true
+        same-site: lax
+  error:
+    include-message: always
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/dramas;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ''
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        type:
+          preferred_instant_jdbc_type: TIMESTAMP
+        jdbc:
+          time_zone: UTC
+  h2:
+    console:
+      enabled: false
+  flyway:
+    enabled: false
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 501MB
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+      password: ''
+      ssl:
+        enabled: false
+      connect-timeout: 1s
+      timeout: 1s
+      repositories:
+        enabled: false
+app:
+  admin-password: ${YINGKE_ADMIN_PASSWORD:}
+  media-root: ${YINGKE_MEDIA_ROOT:./media/demo}
+  asset-root: ${YINGKE_ASSET_ROOT:./media/assets}
+  ffprobe-executable: ${FFPROBE_EXECUTABLE:ffprobe}
+  asset:
+    cover-max-bytes: ${ASSET_COVER_MAX_BYTES:10485760}
+    video-max-bytes: ${ASSET_VIDEO_MAX_BYTES:524288000}
+  rewards:
+    csj:
+      enabled: ${CSJ_REWARDS_ENABLED:false}
+      attempt-ttl: ${CSJ_ATTEMPT_TTL:PT10M}
+      android:
+        enabled: ${CSJ_ANDROID_ENABLED:false}
+        app-id: ${CSJ_ANDROID_APP_ID:}
+        placement-id: ${CSJ_ANDROID_PLACEMENT_ID:}
+        security-key: ${CSJ_ANDROID_SECURITY_KEY:}
+        reward-name: ${CSJ_ANDROID_REWARD_NAME:}
+        reward-amount: ${CSJ_ANDROID_REWARD_AMOUNT:0}
+      ios:
+        enabled: ${CSJ_IOS_ENABLED:false}
+        app-id: ${CSJ_IOS_APP_ID:}
+        placement-id: ${CSJ_IOS_PLACEMENT_ID:}
+        security-key: ${CSJ_IOS_SECURITY_KEY:}
+        reward-name: ${CSJ_IOS_REWARD_NAME:}
+        reward-amount: ${CSJ_IOS_REWARD_AMOUNT:0}
+  social-cache:
+    enabled: false
+    key-prefix: 'ai-short-drama:social:'
+    ttl: PT30S
+integration:
+  master-key: ${INTEGRATION_MASTER_KEY:}
+  master-key-file: ${INTEGRATION_MASTER_KEY_FILE:./data/integrations.key}
+payment:
+  wechat:
+    enabled: ${WECHAT_PAYMENT_ENABLED:false}
+    app-id: ${WECHAT_PAYMENT_APP_ID:}
+    mch-id: ${WECHAT_PAYMENT_MCH_ID:}
+    merchant-serial-no: ${WECHAT_PAYMENT_MERCHANT_SERIAL_NO:}
+    api-v3-key: ${WECHAT_PAYMENT_API_V3_KEY:}
+    private-key: ${WECHAT_PAYMENT_PRIVATE_KEY:}
+    private-key-path: ${WECHAT_PAYMENT_PRIVATE_KEY_PATH:}
+    notify-url: ${WECHAT_PAYMENT_NOTIFY_URL:}
+  alipay:
+    enabled: ${ALIPAY_PAYMENT_ENABLED:false}
+    app-id: ${ALIPAY_PAYMENT_APP_ID:}
+    seller-id: ${ALIPAY_SELLER_ID:}
+    private-key: ${ALIPAY_PAYMENT_PRIVATE_KEY:}
+    alipay-public-key: ${ALIPAY_PUBLIC_KEY:}
+    notify-url: ${ALIPAY_PAYMENT_NOTIFY_URL:}
+    gateway: ${ALIPAY_GATEWAY:https://openapi.alipay.com/gateway.do}
+  allowed-return-origins: ${PAYMENT_ALLOWED_RETURN_ORIGINS:http://localhost:5173,http://localhost:5174,http://127.0.0.1:5173,http://127.0.0.1:5174}
+  membership:
+    price-cents: ${MEMBERSHIP_PRICE_CENTS:1990}
+    days: ${MEMBERSHIP_DAYS:30}
+  episode:
+    price-cents: ${EPISODE_PRICE_CENTS:290}
+oss:
+  access-key-id: ''
+  access-key-secret: ''
+  security-token: ''
+  bucket-name: ''
+  region: cn-hangzhou
+  endpoint: ''

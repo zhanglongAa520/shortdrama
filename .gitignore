@@ -1,0 +1,28 @@
+# Dependencies and build outputs
+node_modules/
+dist/
+target/
+__pycache__/
+*.py[cod]
+
+# Local secrets, database and uploaded assets
+.env
+.env.*
+!.env.local.example
+local-admin.txt
+shortdrama-backend/data/
+shortdrama-backend/media/assets/
+shortdrama-backend/media-source/demo/edit/
+*.key
+*.pem
+*.p12
+*.pfx
+*.log
+
+# Editor and OS files
+.DS_Store
+.idea/
+.vscode/
+
+# Local YAML configuration with real credentials
+application-local.yml
